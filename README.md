@@ -1,5 +1,6 @@
 # mobileT1
-##
+## Descrição do projeto
+Consistes num aplicativo para indicação de filmes com descrição, capa, autores, e classificação.
 
 Autores:
 - Cesar Francisco Bassani da L;
