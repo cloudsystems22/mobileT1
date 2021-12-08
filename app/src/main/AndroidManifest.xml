@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.avanade.mobilet1">
-
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileT1">
         <activity
-            android:name=".MainActivity"
+            android:name=".views.SignInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.CreateAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
