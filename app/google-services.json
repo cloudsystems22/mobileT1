@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "464914469005",
+    "firebase_url": "https://mobiletone-default-rtdb.firebaseio.com",
+    "project_id": "mobiletone",
+    "storage_bucket": "mobiletone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464914469005:android:6ae0d78ca7a871520652c4",
+        "android_client_info": {
+          "package_name": "com.avanade.mobilet1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464914469005-d8g3m5rficdljqlqc5j93n9krj502a5s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.avanade.mobilet1",
+            "certificate_hash": "9cb2874d55c8ca0926b071b875690fdefe093f0c"
+          }
+        },
+        {
+          "client_id": "464914469005-0bttb23ncbk9mdtsfri1epjm9bqpku48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmiULK3x_ACFszoXA61BN5t9x_lQGPkPk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464914469005-0bttb23ncbk9mdtsfri1epjm9bqpku48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
