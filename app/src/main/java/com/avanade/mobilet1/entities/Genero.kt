@@ -1,4 +1,4 @@
-package com.avanade.mobilet1.Entitie
+package com.avanade.mobilet1.entities
 
 enum class Genero(val genero: String) {
     ACAO("Ação"),

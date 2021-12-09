@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.avanade.mobilet1.R
 import android.widget.EditText
+import com.avanade.mobilet1.viewmodels.AuthViewModel
 import com.avanade.mobilet1.extensions.Extensions.toast
-import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
 /** fix missing imports **/
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -15,9 +15,13 @@ class SignInActivity : AppCompatActivity() {
     lateinit var signInPassword: String
     lateinit var signInInputsArray: Array<EditText>
 
+    lateinit var authViewModel: AuthViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
+        authViewModel = AuthViewModel()
 
         signInInputsArray = arrayOf(etSignInEmail, etSignInPassword)
         btnCreateAccount2.setOnClickListener {
@@ -37,16 +41,8 @@ class SignInActivity : AppCompatActivity() {
         signInPassword = etSignInPassword.text.toString().trim()
 
         if (notEmpty()) {
-            firebaseAuth.signInWithEmailAndPassword(signInEmail, signInPassword)
-                .addOnCompleteListener { signIn ->
-                    if (signIn.isSuccessful) {
-                        startActivity(Intent(this, HomeActivity::class.java))
-                        toast("signed in successfully")
-                        finish()
-                    } else {
-                        toast("sign in failed")
-                    }
-                }
+            val result = authViewModel.login(signInEmail, signInPassword)
+
         } else {
             signInInputsArray.forEach { input ->
                 if (input.text.toString().trim().isEmpty()) {
