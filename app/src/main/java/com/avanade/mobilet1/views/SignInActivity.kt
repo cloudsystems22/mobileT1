@@ -21,7 +21,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        authViewModel = AuthViewModel()
+        authViewModel = AuthViewModel(this.application)
 
         signInInputsArray = arrayOf(etSignInEmail, etSignInPassword)
         btnCreateAccount2.setOnClickListener {
@@ -41,7 +41,7 @@ class SignInActivity : AppCompatActivity() {
         signInPassword = etSignInPassword.text.toString().trim()
 
         if (notEmpty()) {
-            val result = authViewModel.login(signInEmail, signInPassword)
+            authViewModel.login(signInEmail, signInPassword)
 
         } else {
             signInInputsArray.forEach { input ->

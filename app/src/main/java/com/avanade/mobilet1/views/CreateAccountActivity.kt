@@ -26,7 +26,7 @@ class CreateAccountActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_account)
         createAccountInputsArray = arrayOf(etEmail, etPassword, etConfirmPassword)
 
-        authViewModel = AuthViewModel()
+        authViewModel = AuthViewModel(this.application)
 
         btnCreateAccount.setOnClickListener {
             signIn()
@@ -80,6 +80,7 @@ class CreateAccountActivity : AppCompatActivity() {
 
             /*create a user*/
             authViewModel.register(userEmail, userPassword)
+
 
         }
     }

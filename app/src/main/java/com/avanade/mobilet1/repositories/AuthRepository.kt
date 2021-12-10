@@ -1,22 +1,24 @@
 package com.avanade.mobilet1.repositories
 
-import com.avanade.mobilet1.extensions.Extensions.toast
-import com.avanade.mobilet1.extensions.Extensions.startNewActivity
+import android.app.Application
+import android.content.Intent
+import android.widget.Toast
 import com.avanade.mobilet1.utils.FirebaseUtils
-import com.avanade.mobilet1.views.CreateAccountActivity
 import com.avanade.mobilet1.views.HomeActivity
 
-class AuthRepository(){
+class AuthRepository(application: Application){
+    val application = application
 
     fun register(userName: String, password: String) {
         FirebaseUtils.firebaseAuth.createUserWithEmailAndPassword(userName, password)
             .addOnCompleteListener {
                if(it.isSuccessful){
-                   toast(CreateAccountActivity::class.java, "")
-                   startNewActivity(HomeActivity::class.java)
-                   sendEmailVerification()
+                   val intent = Intent(application, HomeActivity::class.java)
+                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                   application.startActivity(intent)
+                   sendEmailVerification(userName)
                } else{
-                   toast("failed to Authenticate !")
+                   Toast.makeText(application, "", Toast.LENGTH_SHORT).show()
                }
             }
     }
@@ -25,19 +27,22 @@ class AuthRepository(){
         FirebaseUtils.firebaseAuth.signInWithEmailAndPassword(userName, password)
             .addOnCompleteListener {
                 if(it.isSuccessful){
-                    toast(CreateAccountActivity::class.java, "")
-                    startNewActivity(HomeActivity::class.java)
+                    Toast.makeText(application, "Login: ${userName}", Toast.LENGTH_SHORT).show()
+                    val intent  = Intent(application, HomeActivity::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    application.startActivity(intent)
+
                 } else {
-                    toast("failed to Authenticate !")
+                    Toast.makeText(application, "failed to Authenticate !", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
-    private fun sendEmailVerification() {
+    private fun sendEmailVerification(userName: String) {
         FirebaseUtils.firebaseUser?.let {
             it.sendEmailVerification().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    toast("email sent to $userEmail")
+                    Toast.makeText(application, "email sent to $userName", Toast.LENGTH_SHORT).show()
                 }
             }
         }
