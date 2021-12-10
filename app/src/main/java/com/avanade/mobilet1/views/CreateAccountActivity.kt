@@ -6,6 +6,8 @@ import com.avanade.mobilet1.R
 import kotlinx.android.synthetic.main.activity_create_account.*
 import android.widget.EditText
 import android.content.Intent
+import com.avanade.mobilet1.extensions.Extensions.startNewActivity
+import com.avanade.mobilet1.viewmodels.AuthViewModel
 import com.avanade.mobilet1.extensions.Extensions.toast
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
@@ -17,10 +19,15 @@ class CreateAccountActivity : AppCompatActivity() {
     lateinit var userPassword: String
     lateinit var createAccountInputsArray: Array<EditText>
 
+    lateinit var authViewModel: AuthViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
         createAccountInputsArray = arrayOf(etEmail, etPassword, etConfirmPassword)
+
+        authViewModel = AuthViewModel(this.application)
+
         btnCreateAccount.setOnClickListener {
             signIn()
         }
@@ -38,7 +45,7 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onStart()
         val user: FirebaseUser? = firebaseAuth.currentUser
         user?.let {
-            startActivity(Intent(this, HomeActivity::class.java))
+            startNewActivity(HomeActivity::class.java)
             toast("welcome back")
         }
     }
@@ -72,17 +79,9 @@ class CreateAccountActivity : AppCompatActivity() {
             userPassword = etPassword.text.toString().trim()
 
             /*create a user*/
-            firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        toast("created account successfully !")
-                        sendEmailVerification()
-                        startActivity(Intent(this, HomeActivity::class.java))
-                        finish()
-                    } else {
-                        toast("failed to Authenticate !")
-                    }
-                }
+            authViewModel.register(userEmail, userPassword)
+
+
         }
     }
 

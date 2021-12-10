@@ -1,4 +1,4 @@
-package com.avanade.mobilet1.Entitie
+package com.avanade.mobilet1.entities
 
 import java.util.*
 
