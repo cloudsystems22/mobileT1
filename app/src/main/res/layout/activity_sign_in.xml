@@ -5,14 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.SignInActivity"
+    android:background="@color/black_primary"
     tools:ignore="Autofill, LabelFor">
 
+
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:text="@string/sign_in"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etSignInEmail"
@@ -24,9 +28,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
         android:text="@string/or"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,11 +40,14 @@
 
     <EditText
         android:id="@+id/etSignInEmail"
+        android:background="@drawable/edit_text_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
+        android:fontFamily="@font/montserrat"
         android:hint="@string/email"
+        android:textColor="@color/gray_primary"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:padding="10dp"
@@ -51,9 +59,12 @@
 
     <EditText
         android:id="@+id/etSignInPassword"
+        android:background="@drawable/edit_text_layout"
         android:layout_width="0dp"
+        android:textColor="@color/gray_primary"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
+        android:fontFamily="@font/montserrat"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:maxLength="8"
@@ -69,7 +80,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
-        android:backgroundTint="@color/black"
+        android:fontFamily="@font/montserrat"
+        android:background="@drawable/button_layout"
         android:text="@string/sign_in"
         app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount2"
         app:layout_constraintEnd_toEndOf="@+id/etSignInPassword"
@@ -98,4 +110,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btnCreateAccount2"
         app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

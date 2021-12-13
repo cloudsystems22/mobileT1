@@ -21,6 +21,10 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        actionBar?.hide()
+
+        supportActionBar?.hide()
+
         authViewModel = AuthViewModel(this.application)
 
         signInInputsArray = arrayOf(etSignInEmail, etSignInPassword)
