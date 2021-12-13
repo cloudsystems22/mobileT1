@@ -2,22 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu_home"
-        android:title="Home"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Search"
+        android:icon="@drawable/icosearch"
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_add_post"
-        android:title="Novo Post"
-        android:icon="@drawable/ic_baseline_post_add_24"
-        app:showAsAction="always"/>
-
-    <item android:id="@+id/menu_my_posts"
-        android:title="Meus Posts"
-        android:icon="@drawable/ic_baseline_local_post_office_24"
+        android:title="Home"
+        android:icon="@drawable/icohome"
         app:showAsAction="always"/>
 
     <item android:id="@+id/menu_profile"
         android:title="Meu Perfil"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:icon="@drawable/icoperfil"
         app:showAsAction="always"/>
 </menu>

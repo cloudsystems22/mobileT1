@@ -1,101 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".views.SignInActivity"
+    android:background="@color/black_primary"
     tools:ignore="Autofill, LabelFor">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/etSignInEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/or"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/logomm"
+        android:layout_width="170dp"
+        android:layout_height="170dp"/>
 
-    <EditText
-        android:id="@+id/etSignInEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="20dp"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/etSignInPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etSignInPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:maxLength="8"
-        android:minHeight="48dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
-        app:layout_constraintEnd_toEndOf="@+id/etSignInEmail"
-        app:layout_constraintStart_toStartOf="@+id/etSignInEmail"
-        app:layout_constraintTop_toBottomOf="@+id/etSignInEmail" />
+        <EditText
+            android:id="@+id/etSignInEmail"
+            android:background="@drawable/edit_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="17dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="@string/email"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:textColor="@color/gray_primary"
+            android:inputType="textEmailAddress" />
 
-    <Button
-        android:id="@+id/btnSignIn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/sign_in"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateAccount2"
-        app:layout_constraintEnd_toEndOf="@+id/etSignInPassword"
-        app:layout_constraintStart_toStartOf="@+id/etSignInPassword"
-        app:layout_constraintTop_toBottomOf="@+id/etSignInPassword" />
+        <EditText
+            android:id="@+id/etSignInPassword"
+            android:padding="17dp"
+            android:background="@drawable/edit_text_layout"
+            android:layout_width="match_parent"
+            android:textColor="@color/gray_primary"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="@string/password"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/btnCreateAccount2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:text="@string/create_account"
-        app:layout_constraintBottom_toTopOf="@+id/Signin"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignIn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btnSignIn"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/Signin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnCreateAccount2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btnCreateAccount2"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount2" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <CheckBox
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_secudary"
+                android:text="@string/check_text_remember_me"
+                android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/montserrat"
+            android:background="@drawable/button_layout"
+            android:text="@string/sign_in" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="150dp"
+                android:background="@color/white"
+                android:layout_margin="6dp"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="35dp"
+                android:textAlignment="center"
+                android:text="Ou"
+                android:fontFamily="@font/montserrat"
+                android:layout_margin="3dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="150dp"
+                android:background="@color/white"
+                android:layout_margin="6dp"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:background="@drawable/button_layout_google"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/Signin"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="9dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:text="Ainda não é cadastrado?"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/btnCreateAccount2"
+            android:textColor="@color/red_secudary"
+            android:text="Cadastre-se"
+            android:fontFamily="@font/montserrat"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
