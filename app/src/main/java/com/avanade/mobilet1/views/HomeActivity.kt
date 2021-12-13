@@ -9,10 +9,7 @@ import com.avanade.mobilet1.R
 import com.avanade.mobilet1.extensions.Extensions.toast
 import com.avanade.mobilet1.utils.FirebaseUtils.database
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
-import com.avanade.mobilet1.views.fragments.AddMovieFragment
-import com.avanade.mobilet1.views.fragments.HomeFragment
-import com.avanade.mobilet1.views.fragments.MyMoviesFragment
-import com.avanade.mobilet1.views.fragments.ProfileFragment
+import com.avanade.mobilet1.views.fragments.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -47,19 +44,11 @@ class HomeActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_home -> replaceFragment(homeFragment)
                 R.id.menu_add_post -> replaceFragment(addMovieFragment)
-                R.id.menu_my_posts -> replaceFragment(myMoviesFragment)
                 R.id.menu_profile -> replaceFragment(profileFragment)
             }
             true
         }
 
-        /*
-        btnSignOut.setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this, CreateAccountActivity::class.java))
-            toast("signed out")
-            finish()
-        } */
 
 
   /*      var filme = Filme()
