@@ -74,10 +74,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_categories_movies"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_width="match_parent"
-            tools:listitem="@layout/item_categories_movies"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_categories_movies" />
 
     </LinearLayout>
 

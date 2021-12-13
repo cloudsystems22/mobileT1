@@ -29,13 +29,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_movies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/title_movie"
+        android:clipToPadding="false"
         android:paddingHorizontal="8dp"
         android:paddingBottom="8dp"
         tools:itemCount="1"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_movie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        tools:listitem="@layout/item_movie" />
 
 </RelativeLayout>

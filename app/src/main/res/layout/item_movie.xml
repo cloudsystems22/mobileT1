@@ -10,7 +10,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintDimensionRatio="1:1.6"
         android:scaleType="centerCrop"
         android:id="@+id/image_movie"
         android:layout_width="0dp"
@@ -35,11 +35,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
         <ImageView
+            android:id="@+id/img_like"
             android:src="@drawable/icolike"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
 
         <TextView
+            android:id="@+id/text_like"
             android:text="30"
             android:layout_width="40dp"
             android:textColor="@color/white"
@@ -51,6 +53,7 @@
             android:layout_height="20dp"/>
 
         <TextView
+            android:id="@+id/text_commit"
             android:text="34"
             android:layout_width="40dp"
             android:textColor="@color/white"

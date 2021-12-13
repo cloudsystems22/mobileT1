@@ -9,6 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.adapters.CategoriesAdapter
+import com.avanade.mobilet1.adapters.Listcategories
+import com.avanade.mobilet1.adapters.Movies
+import com.avanade.mobilet1.adapters.listCategories
+import com.google.gson.Gson
 
 
 class HomeFragment : Fragment() {
@@ -37,7 +41,21 @@ class HomeFragment : Fragment() {
 
         rcCategoriesMovies.adapter = categoriesAdapter
 
+        requestMovies()
 
+    }
+
+    private fun requestMovies() {
+        Thread {
+            Thread.sleep(1000)
+            val listcategories = Gson().fromJson(listCategories(), Listcategories::class.java)
+
+            activity?.runOnUiThread{
+                categoriesAdapter?.add(listcategories.categories)
+            }
+
+            println(listcategories)
+        }.start()
     }
 
 }
