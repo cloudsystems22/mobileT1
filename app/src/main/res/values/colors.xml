@@ -11,6 +11,7 @@
     <!-- Paleta de cores -->
     <color name="black_primary">#1C1B1C</color>
     <color name="gray_scudary">#ACACAC</color>
+    <color name="gray_google">#E5E5E5</color>
     <color name="red_primary">#C1272D</color>
     <color name="red_secudary">#FE8589</color>
     <color name="gray_primary">#355070</color>

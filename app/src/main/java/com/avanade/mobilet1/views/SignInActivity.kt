@@ -29,8 +29,8 @@ class SignInActivity : AppCompatActivity() {
 
         signInInputsArray = arrayOf(etSignInEmail, etSignInPassword)
         btnCreateAccount2.setOnClickListener {
-            startActivity(Intent(this, CreateAccountActivity::class.java))
-            finish()
+            val intent = Intent(this, CreateAccountActivity::class.java)
+            startActivity(intent)
         }
 
         btnSignIn.setOnClickListener {

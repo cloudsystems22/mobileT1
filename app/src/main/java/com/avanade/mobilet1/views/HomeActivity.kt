@@ -49,13 +49,6 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
-        /*
-        btnSignOut.setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this, CreateAccountActivity::class.java))
-            toast("signed out")
-            finish()
-        } */
 
 
   /*      var filme = Filme()
