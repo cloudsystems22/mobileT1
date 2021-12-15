@@ -106,7 +106,7 @@
             android:background="@drawable/button_layout_google"
             android:layout_width="match_parent"
             android:fontFamily="@font/montserrat"
-            android:id="@+id/Signin"
+            android:id="@+id/btnSignInGoogle"
             android:layout_height="60dp"/>
 
     </LinearLayout>

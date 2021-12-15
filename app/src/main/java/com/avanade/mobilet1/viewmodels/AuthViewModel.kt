@@ -12,7 +12,6 @@ class AuthViewModel(application: Application)
 
     var authRepository = AuthRepository(application)
 
-
     fun register(userName:String, password:String) = authRepository.register(userName, password)
 
     fun login(userName:String, password:String) = authRepository.login(userName, password)
