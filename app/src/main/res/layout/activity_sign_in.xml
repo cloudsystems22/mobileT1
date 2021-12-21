@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".views.SignInActivity"
+    android:background="@color/black_primary"
+    tools:ignore="Autofill, LabelFor">
+
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="22dp"
+        android:src="@drawable/logomm"
+        android:layout_width="170dp"
+        android:layout_height="170dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etSignInEmail"
+            android:background="@drawable/edit_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="17dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="@string/email"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:textColor="@color/gray_primary"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/etSignInPassword"
+            android:padding="17dp"
+            android:background="@drawable/edit_text_layout"
+            android:layout_width="match_parent"
+            android:textColor="@color/gray_primary"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="@string/password"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:inputType="textPassword" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_secudary"
+                android:text="@string/check_text_remember_me"
+                android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginVertical="20dp"
+            android:fontFamily="@font/montserrat"
+            android:background="@drawable/button_layout"
+            android:text="@string/sign_in" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="150dp"
+                android:background="@color/white"
+                android:layout_margin="6dp"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="35dp"
+                android:textAlignment="center"
+                android:text="Ou"
+                android:fontFamily="@font/montserrat"
+                android:layout_margin="3dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_width="150dp"
+                android:background="@color/white"
+                android:layout_margin="6dp"
+                android:layout_height="1dp"/>
+
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:background="@drawable/button_layout_google"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/montserrat"
+            android:id="@+id/btnSignInGoogle"
+            android:layout_height="60dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="9dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:text="Ainda não é cadastrado?"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/btnCreateAccount2"
+            android:textColor="@color/red_secudary"
+            android:text="Cadastre-se"
+            android:fontFamily="@font/montserrat"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
