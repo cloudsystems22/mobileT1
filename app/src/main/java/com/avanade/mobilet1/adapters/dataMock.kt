@@ -7,13 +7,17 @@ data class Listcategories(
 )
 
 data class Categories(
-    val title: String,
-    val movies: List<Movies>
+    var title: String,
+    var movies: List<Movies>
 )
 
 data class Movies(
-    @SerializedName("name") val nome:String,
-    @SerializedName("likes") val likes:Int,
-    @SerializedName("comment") val comment:Int,
-    @SerializedName("img") val img:String,
+    var nome:String,
+    var likes:Int,
+    var comment:Int,
+    var img:String
+    //@SerializedName("name") val nome:String,
+    //@SerializedName("likes") val likes:Int,
+    //@SerializedName("comment") val comment:Int,
+    //@SerializedName("img") val img:String,
 )
