@@ -7,16 +7,16 @@
 
     <TextView
         android:id="@+id/title_movie"
-        android:text="Ação"
-        android:layout_marginTop="32dp"
-        android:paddingHorizontal="16dp"
-        android:layout_marginBottom="32dp"
-        android:textSize="22dp"
-        android:layout_toStartOf="@id/icon_arrow"
-        android:textStyle="bold"
-        android:textColor="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toStartOf="@id/icon_arrow"
+        android:paddingHorizontal="16dp"
+        android:text="Ação"
+        android:textColor="@color/white"
+        android:textSize="22dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/icon_arrow"
@@ -34,7 +34,7 @@
         android:layout_below="@id/title_movie"
         android:clipToPadding="false"
         android:paddingHorizontal="8dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="12dp"
         tools:itemCount="1"
         tools:listitem="@layout/item_movie" />
 
