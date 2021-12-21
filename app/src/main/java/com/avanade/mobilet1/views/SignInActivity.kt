@@ -60,20 +60,22 @@ class SignInActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = FirebaseUtils.firebaseAuth.currentUser
-        updateUI(currentUser)
+        if(currentUser != null){
+            updateUI(currentUser)
+        }
     }
 
 
     private fun signInUserGoogle() {
 
-        // Configure Google Sign In
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
-        signIn()
+//        // Configure Google Sign In
+//        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//            .requestIdToken(getString(R.string.default_web_client_id))
+//            .requestEmail()
+//            .build()
+//
+//        googleSignInClient = GoogleSignIn.getClient(this, gso)
+//        signIn()
 
     }
 
