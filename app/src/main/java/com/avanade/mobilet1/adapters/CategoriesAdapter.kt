@@ -1,24 +1,21 @@
 package com.avanade.mobilet1.adapters
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.avanade.mobilet1.R
-import com.avanade.mobilet1.entities.Categories
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import com.avanade.mobilet1.entities.Movies
 import kotlinx.android.synthetic.main.item_categories_movies.view.*
 
 class CategoriesAdapter():RecyclerView.Adapter<CategoriesAdapter.CategoryHolder>() {
 
-    private var catgList = emptyList<Categories>()
-    private var moviesList = emptyList<Categories>()
+    private var catgList = emptyList<Movies>()
+    private var moviesList = emptyList<Movies>()
 
-    private var onClickItem: ((Categories) -> Unit)? = null
+    private var onClickItem: ((Movies) -> Unit)? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -27,12 +24,12 @@ class CategoriesAdapter():RecyclerView.Adapter<CategoriesAdapter.CategoryHolder>
         LayoutInflater.from(parent.context).inflate(R.layout.item_categories_movies, parent, false)
     )
 
-    fun updatelist(listCategory: MutableList<Categories>){
-        val newList = ArrayList<Categories>()
-        val newMovies = ArrayList<Categories>()
-        val groupCateg = listCategory.groupBy { it.title }
+    fun updatelist(listCategory: MutableList<Movies>){
+        val newList = ArrayList<Movies>()
+        val newMovies = ArrayList<Movies>()
+        val groupCateg = listCategory.groupBy { it.category }
         groupCateg.forEach {
-            newList.add(Categories(title=it.key))
+            newList.add(Movies(category=it.key))
         }
         newMovies.addAll(listCategory)
 
@@ -48,12 +45,12 @@ class CategoriesAdapter():RecyclerView.Adapter<CategoriesAdapter.CategoryHolder>
     override fun getItemCount(): Int = catgList.size
 
     class CategoryHolder(var view:View) : RecyclerView.ViewHolder(view){
-        fun bind(categories: Categories, listMoveis:List<Categories>){
+        fun bind(movies: Movies, listMoveis:List<Movies>){
 
-            val newMovies = listMoveis.filter { it.title == categories.title }
+            val newMovies = listMoveis.filter { it.category == movies.category }
 
             with(itemView){
-                this.title_movie.text = categories.title
+                this.title_movie.text = movies.category
 
                 this.rc_movies.layoutManager = LinearLayoutManager(
                     itemView.context, RecyclerView.HORIZONTAL, false

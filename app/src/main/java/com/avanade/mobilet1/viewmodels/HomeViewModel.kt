@@ -1,18 +1,20 @@
 package com.avanade.mobilet1.viewmodels
 
 import android.util.Log
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.avanade.mobilet1.entities.Categories
+import com.avanade.mobilet1.entities.Movies
+import com.avanade.mobilet1.repositories.AuthRepository
 import com.avanade.mobilet1.utils.FirebaseUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeViewModel: ViewModel() {
 
-    private var _categories = MutableLiveData<ArrayList<Categories>>()
+    private var _movies = MutableLiveData<ArrayList<Movies>>()
 
-    private var categories = ArrayList<Categories>()
+    private var movies = ArrayList<Movies>()
 
     private lateinit var firebaseFirestore: FirebaseFirestore
     private lateinit var firebaseAuth: FirebaseAuth
@@ -25,33 +27,34 @@ class HomeViewModel: ViewModel() {
         listenerMyMovies()
     }
 
-    internal var getMyMovies: MutableLiveData<ArrayList<Categories>>
-        get() { return _categories }
-        set(value) { _categories.value }
+    //fun verifyUser() = authRepository.verifyUser()
+
+    internal var getMyMovies: MutableLiveData<ArrayList<Movies>>
+        get() { return _movies }
+        set(value) { _movies.value }
 
     private fun listenerMyMovies() {
 
         val usuarioLogadoId = firebaseAuth.uid
 
         firebaseFirestore.collection("movies")
-            .whereEqualTo("userId",usuarioLogadoId)
             .addSnapshotListener{ snapshot, error ->
                 if(error != null){
                     return@addSnapshotListener
                 }
-                categories = ArrayList<Categories>()
+                movies = ArrayList<Movies>()
                 if(snapshot != null){
                     val documents = snapshot.documents
                     println(documents)
 
                     documents.forEach {
-                        var categoria = it.toObject(Categories::class.java)
-                        categoria!!.id = it.id
-                        categories.add(categoria!!)
+                        var movie = it.toObject(Movies::class.java)
+                        movie!!.id = it.id
+                        movies.add(movie)
                     }
                 }
                 //println(categories)
-                _categories.value = categories
+                _movies.value = movies
 
             }
     }
