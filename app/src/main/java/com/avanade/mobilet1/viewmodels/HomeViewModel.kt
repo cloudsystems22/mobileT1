@@ -1,9 +1,11 @@
 package com.avanade.mobilet1.viewmodels
 
 import android.util.Log
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.avanade.mobilet1.entities.Movies
+import com.avanade.mobilet1.repositories.AuthRepository
 import com.avanade.mobilet1.utils.FirebaseUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,6 +26,8 @@ class HomeViewModel: ViewModel() {
 
         listenerMyMovies()
     }
+
+    //fun verifyUser() = authRepository.verifyUser()
 
     internal var getMyMovies: MutableLiveData<ArrayList<Movies>>
         get() { return _movies }

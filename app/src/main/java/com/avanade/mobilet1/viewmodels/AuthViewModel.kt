@@ -16,4 +16,8 @@ class AuthViewModel(application: Application)
 
     fun login(userName:String, password:String) = authRepository.login(userName, password)
 
+    fun userLogado() = authRepository.userLogado()
+
+    fun userOff() = authRepository.userOff()
+
 }

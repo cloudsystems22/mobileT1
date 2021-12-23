@@ -1,5 +1,6 @@
 package com.avanade.mobilet1.viewmodels
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.adapters.CategoriesAdapter
 import com.avanade.mobilet1.adapters.Listcategories
 import com.avanade.mobilet1.adapters.listCategories
+import com.avanade.mobilet1.repositories.AuthRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 

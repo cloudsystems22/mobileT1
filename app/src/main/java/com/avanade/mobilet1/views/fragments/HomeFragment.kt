@@ -15,6 +15,7 @@ import com.avanade.mobilet1.adapters.Listcategories
 import com.avanade.mobilet1.adapters.listCategories
 import com.avanade.mobilet1.databinding.FragmentHomeBinding
 import com.avanade.mobilet1.databinding.FragmentSearchBinding
+import com.avanade.mobilet1.utils.FirebaseUtils
 import com.avanade.mobilet1.viewmodels.HomeViewModel
 import com.avanade.mobilet1.viewmodels.SearchViewModel
 import com.google.gson.Gson

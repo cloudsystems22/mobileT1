@@ -31,14 +31,6 @@ class MoviesAdapter(
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MovieDetailActivity::class.java)
             intent.putExtra("id", movies[position].id)
-            intent.putExtra("title", movies[position].title)
-            intent.putExtra("category", movies[position].category)
-            intent.putExtra("sinopse", movies[position].sinopse)
-            intent.putExtra("year", movies[position].year)
-            intent.putExtra("author", movies[position].author)
-            intent.putExtra("poster", movies[position].poster)
-            intent.putExtra("likes", movies[position].likes)
-            intent.putExtra("comment", movies[position].comment)
             holder.itemView.context.startActivity(intent)
 
         }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.databinding.ActivityMovieDetailBinding
@@ -24,35 +25,39 @@ class MovieDetailActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        val movieId = intent.getStringExtra("id")
+
         viewModel = ViewModelProvider.NewInstanceFactory().create(MovieDetailViewMobel::class.java)
+        viewModel.getId(movieId!!)
 
-        binding.tvTitle.text = intent.getStringExtra("title")
-        binding.tvGenre.text = " • ${intent.getStringExtra("category")} • "
-        binding.tvSinopse.text = intent.getStringExtra("sinopse")
-        binding.tvYear.text = intent.getStringExtra("year")
-        binding.tvCreatedBy.text = "Criado por: ${intent.getStringExtra("author")}"
-        binding.textLike.text = "${intent.getIntExtra("likes", 0)} Curtidas"
-        binding.textCommit.text = "${intent.getIntExtra("comment", 0)} Comentários"
+        viewModel.getMovie.observe(this, Observer {
+            binding.tvGenre.text = " • ${it.category} • "
+            binding.tvSinopse.text = it.sinopse
+            binding.tvYear.text = it.year
+            binding.tvCreatedBy.text = "Criado por: ${it.author}"
+            binding.textLike.text = "${it.likes} Curtidas"
+            binding.textCommit.text = "${it.comment} Comentários"
 
-        Picasso.with(this)
-            .load(intent.getStringExtra("poster"))
-            .into(binding.imageMovie)
+            viewModel._likes.value = it.likes
+
+            Picasso.with(this)
+                .load(it.poster)
+                .into(binding.imageMovie)
+        })
 
         binding.ivBack.setOnClickListener {
             finish()
         }
 
-        viewModel.number = intent.getIntExtra("likes", 0)
+        //viewModel.number = intent.getIntExtra("likes", 0)
         viewModel.countLikes.observe( this, {
             binding.textLike.text = it.toString()
         })
 
-
         binding.imgLike.setOnClickListener {
             viewModel.getLikes()
+            viewModel.updateLikes(movieId!!)
         }
-
-
 
     }
 }

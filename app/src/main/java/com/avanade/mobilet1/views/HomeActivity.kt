@@ -7,8 +7,10 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.extensions.Extensions.toast
+import com.avanade.mobilet1.utils.FirebaseUtils
 import com.avanade.mobilet1.utils.FirebaseUtils.database
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
+import com.avanade.mobilet1.viewmodels.AuthViewModel
 import com.avanade.mobilet1.views.fragments.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -18,26 +20,23 @@ import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
-    //    private lateinit var database: DatabaseReference
-    private lateinit var auth: FirebaseAuth
-
     private val homeFragment = HomeFragment()
     private val addMovieFragment = AddMovieFragment()
     private val myMoviesFragment = MyMoviesFragment()
     private val profileFragment = ProfileFragment()
     private val searchFragemnt = SearchFragment()
 
-    lateinit var btnSignOut: Button
-
+    lateinit var authViewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        authViewModel = AuthViewModel(this.application)
+
+
         val refUsuario = database.getReference("usuarios")
         val refFilme = database.getReference("filmes")
-
-        auth = Firebase.auth
 
         replaceFragment(homeFragment)
 
@@ -50,6 +49,12 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        authViewModel.userOff()
     }
 
     private fun replaceFragment(fragment: Fragment) {
