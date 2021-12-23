@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
         categoriesAdapter = CategoriesAdapter()
         binding.rcSearchedMovies.adapter = categoriesAdapter
 
-        viewModel.getCategories.observe(viewLifecycleOwner, Observer {
+        viewModel.getMovies.observe(viewLifecycleOwner, Observer {
             categoriesAdapter.updatelist(it)
         })
 
