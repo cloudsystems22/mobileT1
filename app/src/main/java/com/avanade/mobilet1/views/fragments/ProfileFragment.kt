@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
 import com.avanade.mobilet1.views.CreateAccountActivity
+import com.avanade.mobilet1.views.SignInActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
@@ -33,7 +34,7 @@ class ProfileFragment : Fragment() {
         btnSignOut.setOnClickListener {
             firebaseAuth.signOut()
             Toast.makeText(view.context,"Sign-Out", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(view.context, CreateAccountActivity::class.java))
+            startActivity(Intent(view.context, SignInActivity::class.java))
         }
     }
 }
