@@ -3,8 +3,11 @@ package com.avanade.mobilet1.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.R
@@ -47,6 +50,23 @@ class MovieDetailActivity : AppCompatActivity() {
                 .into(binding.imageMovie)
         })
 
+        if(binding.tvComment.text == "sem_comentarios"){
+            binding.commentAtual.setVisibility(View.INVISIBLE)
+            binding.firstComment.setVisibility(View.VISIBLE)
+        }
+
+        viewModel.getComments.observe(this, Observer{
+            binding.commentAtual.setVisibility(View.VISIBLE)
+            binding.firstComment.setVisibility(View.INVISIBLE)
+
+            binding.tvUserName.text = it[0].username
+            binding.tvComment.text = it[0].comment
+
+            Picasso.with(this)
+                .load(it[0].photoperfil)
+                .into(binding.imgUser)
+        })
+
         binding.ivBack.setOnClickListener {
             finish()
         }
@@ -61,7 +81,10 @@ class MovieDetailActivity : AppCompatActivity() {
             viewModel.updateLikes(movieId!!)
         }
 
-        binding.clkComments.setOnClickListener {
+        binding.commentAtual.setOnClickListener {
+            openBottomSheet(movieId)
+        }
+        binding.firstComment.setOnClickListener {
             openBottomSheet(movieId)
         }
 

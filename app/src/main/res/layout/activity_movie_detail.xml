@@ -146,7 +146,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/clk_comments"
+        android:id="@+id/comment_atual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
@@ -160,7 +160,7 @@
             app:strokeWidth="1dp">
 
             <ImageView
-                android:id="@+id/profile_logo"
+                android:id="@+id/img_user"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="fitCenter"
@@ -174,7 +174,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_comment_name"
+                android:id="@+id/tv_user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -183,15 +183,38 @@
                 android:textSize="6pt" />
 
             <TextView
-                android:id="@+id/tv_comment_content"
+                android:id="@+id/tv_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Steve Carell é demais!  Ele atuou perfeitamente nessa serie..."
+                android:text="sem_comentarios"
                 android:textColor="@color/white"
                 android:textSize="5pt" />
         </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="-72dp"
+        android:gravity="center"
+        android:id="@+id/first_comment"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_margin="16dp"
+            android:src="@drawable/icocommit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:gravity="center_vertical"
+            android:text="Seja o primeiro a comentar"
+            android:textColor="@color/white"
+            android:textSize="10pt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 
