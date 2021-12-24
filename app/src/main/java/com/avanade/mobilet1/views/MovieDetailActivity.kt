@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.databinding.ActivityMovieDetailBinding
 import com.avanade.mobilet1.viewmodels.MovieDetailViewMobel
+import com.avanade.mobilet1.views.fragments.CommentsMovieFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import java.lang.Integer.parseInt
@@ -31,12 +32,13 @@ class MovieDetailActivity : AppCompatActivity() {
         viewModel.getId(movieId!!)
 
         viewModel.getMovie.observe(this, Observer {
+            binding.tvTitle.text = it.title
             binding.tvGenre.text = " • ${it.category} • "
             binding.tvSinopse.text = it.sinopse
             binding.tvYear.text = it.year
             binding.tvCreatedBy.text = "Criado por: ${it.author}"
             binding.textLike.text = "${it.likes} Curtidas"
-            binding.textCommit.text = "${it.comment} Comentários"
+            binding.textCommit.text = "0 Comentários"
 
             viewModel._likes.value = it.likes
 
@@ -58,6 +60,20 @@ class MovieDetailActivity : AppCompatActivity() {
             viewModel.getLikes()
             viewModel.updateLikes(movieId!!)
         }
+
+        binding.clkComments.setOnClickListener {
+            openBottomSheet(movieId)
+        }
+
+    }
+
+    fun openBottomSheet(movieId:String){
+        val args = Bundle()
+        args.putString("movieId", movieId)
+
+        var commentsMovieFragment = CommentsMovieFragment()
+        commentsMovieFragment.arguments = args
+        commentsMovieFragment.show(supportFragmentManager, "TAG")
 
     }
 }

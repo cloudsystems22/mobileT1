@@ -146,6 +146,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/clk_comments"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
@@ -194,10 +195,6 @@
 
     </LinearLayout>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:hint="Comente algo..." />
+
 
 </LinearLayout>

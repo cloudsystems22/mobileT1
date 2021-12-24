@@ -17,5 +17,7 @@
     <string name="search_for_movies">Search for movies</string>
     <string name="title_movie">Titulo do Filme</string>
     <string name="check_text_remember_me">Lembre-me</string>
+    <string name="title_comments_movie">Comentários</string>
+    <string name="enter_your_comment">Coment algo...</string>
 
 </resources>

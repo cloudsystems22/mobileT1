@@ -46,7 +46,7 @@ class MoviesAdapter(
             with(itemView){
                 title_movie.text = movies.title
                 text_like.text = movies.likes.toString()
-                text_commit.text = movies.comment.toString()
+                text_commit.text = "0"
 
                 //var display:String = "https://firebasestorage.googleapis.com/v0/b/mobiletone.appspot.com/o/posters%2Fthumb%2Fvenom.jpg?alt=media&token=1b29cccb-ba33-4044-b9ca-bab615a44d75"
                 if(movies.thumb.isNullOrEmpty()){
