@@ -80,9 +80,14 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.tvUserName.text = it[0].username
             binding.tvComment.text = it[0].comment
 
-            Picasso.with(this)
-                .load(it[0].photoperfil)
-                .into(binding.imgUser)
+            if(it[0].photoperfil.isNullOrEmpty()){
+                binding.imgUser.setImageResource(R.drawable.user)
+            } else {
+                Picasso.with(this)
+                    .load(it[0].photoperfil)
+                    .into(binding.imgUser)
+            }
+
         })
 
         binding.ivBack.setOnClickListener {
