@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileT1">
         <activity
+            android:name=".views.CreateMovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.fragments.ProfileFragment"
             android:exported="false" />
         <activity
