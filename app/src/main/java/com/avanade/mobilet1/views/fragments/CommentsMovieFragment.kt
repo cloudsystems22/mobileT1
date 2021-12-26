@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.adapters.CommentsAdapater
 import com.avanade.mobilet1.databinding.FragmentCommentsMovieBinding
+import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.viewmodels.CommentMovieViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -48,6 +49,14 @@ class CommentsMovieFragment() : BottomSheetDialogFragment() {
         viewModel.getComments.observe(this, Observer {
             commentsAdapater.updatelist(it)
         })
+
+        binding.ivSendComment.setOnClickListener {
+            val comment = Comments(
+                comment = binding.etComment.text.toString()
+            )
+            viewModel.commentAdd(comment, movieId, view.context)
+            binding.etComment.text.clear()
+        }
     }
 
 }
