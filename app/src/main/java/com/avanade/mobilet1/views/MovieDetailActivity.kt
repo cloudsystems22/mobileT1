@@ -52,19 +52,16 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.tvSinopse.text = it.sinopse
             binding.tvYear.text = it.year
             binding.tvCreatedBy.text = "Criado por: ${it.author}"
-            binding.textLike.text = "${it.like.count()} Curtidas"
+            binding.textLike.text = "${it.likes.count()} Curtidas"
             Log.i("xpto", "${viewModel.userId}")
-            if(it.like.contains(viewModel.userId)){
+            if(it.likes.contains(viewModel.userId)){
                 binding.imgLike.setImageResource(R.drawable.icolike)
             } else {
                 binding.imgLike.setImageResource(R.drawable.likevz)
             }
 
+            binding.textCommit.text = "${it.commnets} Comentários"
 
-
-            binding.textCommit.text = "0 Comentários"
-
-            viewModel._likes.value = it.like.count()
             imgPoster = it.poster
             Picasso.with(this)
                 .load(it.poster)
@@ -92,13 +89,7 @@ class MovieDetailActivity : AppCompatActivity() {
             finish()
         }
 
-        //viewModel.number = intent.getIntExtra("likes", 0)
-        viewModel.countLikes.observe( this, {
-            binding.textLike.text = it.toString()
-        })
-
         binding.imgLike.setOnClickListener {
-            viewModel.getLikes()
             viewModel.updateLikes(movieId!!)
         }
 

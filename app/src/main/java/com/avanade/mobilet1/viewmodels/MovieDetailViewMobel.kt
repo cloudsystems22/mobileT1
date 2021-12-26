@@ -21,20 +21,11 @@ class MovieDetailViewMobel: ViewModel() {
     private lateinit var firebaseAuth: FirebaseAuth
 
     private var _movie = MutableLiveData<Movies>()
-
-    private var likes = emptyList<String>()
-
+    private var arrayLikes = emptyList<String>()
     internal var userId = ""
-
     private var _comments = MutableLiveData<ArrayList<Comments>>()
-
     private var comments = ArrayList<Comments>()
 
-    var number:Int = 0
-    val _likes = MutableLiveData<Int>()
-    val _likesString = MutableLiveData<String>()
-    val countLikes:LiveData<String>
-        get() = _likesString
 
     init {
         firebaseFirestore = FirebaseFirestore.getInstance()
@@ -52,10 +43,6 @@ class MovieDetailViewMobel: ViewModel() {
         get() { return _comments }
         set(value) { _comments.value }
 
-    fun getLikes(){
-        _likes.value = _movie.value!!.like.count()
-        _likesString.value = "${_likes.value} Curtidas"
-    }
 
     fun getId(movieId:String){
         getMovie(movieId)
@@ -73,17 +60,8 @@ class MovieDetailViewMobel: ViewModel() {
                 if(snapshot != null){
                     val movie = snapshot.toObject(Movies::class.java)
                     _movie.value = movie
-                    number = movie!!.like.count()
                 }
             }
-            /*.get()
-
-            .addOnSuccessListener(OnSuccessListener {
-                val movie = it.toObject(Movies::class.java)
-                _movie.value = movie
-                number = movie!!.like.count()
-
-            }) */
 
     }
 
@@ -99,10 +77,10 @@ class MovieDetailViewMobel: ViewModel() {
                 comments = ArrayList<Comments>()
                 if(snapshot != null){
                     val documents = snapshot.documents
-                    Log.e("xpto", "$documents")
+                    //Log.e("xpto", "$documents")
 
                     documents.forEach {
-                        Log.e("xpto", "${it.id}")
+                        //Log.e("xpto", "${it.id}")
                         var comment = it.toObject(Comments::class.java)
                         comment!!.id = it.id
                         comments.add(comment)
@@ -116,19 +94,19 @@ class MovieDetailViewMobel: ViewModel() {
 
     fun updateLikes(id:String){
 
-        likes = _movie.value!!.like
+        arrayLikes = _movie.value!!.likes
 
-        if(likes.contains(userId)){
+        if(arrayLikes.contains(userId)){
             firebaseFirestore
                 .collection("movies")
                 .document(id)
-                .update("like", FieldValue.arrayRemove(userId))
+                .update("likes", FieldValue.arrayRemove(userId))
 
         } else {
             firebaseFirestore
                 .collection("movies")
                 .document(id)
-                .update("like", FieldValue.arrayUnion(userId))
+                .update("likes", FieldValue.arrayUnion(userId))
 
         }
 

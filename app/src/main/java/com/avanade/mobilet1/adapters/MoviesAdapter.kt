@@ -48,14 +48,14 @@ class MoviesAdapter(
 
             with(itemView){
 
-                if(movies.like.contains(userId)){
+                if(movies.likes.contains(userId)){
                     img_like.setImageResource(R.drawable.icolike)
                 } else {
                     img_like.setImageResource(R.drawable.likevz)
                 }
 
                 title_movie.text = movies.title
-                text_like.text = movies.like.count().toString()
+                text_like.text = movies.likes.count().toString()
                 text_commit.text = "0"
 
                 //var display:String = "https://firebasestorage.googleapis.com/v0/b/mobiletone.appspot.com/o/posters%2Fthumb%2Fvenom.jpg?alt=media&token=1b29cccb-ba33-4044-b9ca-bab615a44d75"
