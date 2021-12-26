@@ -4,6 +4,12 @@
     <string name="sign_in">Sign in</string>
     <string name="or">Or</string>
     <string name="create_account">Cadastrar</string>
+    <string name="create_movie">Cadastro de Filme</string>
+    <string name="movie_name">Nome do Filme</string>
+    <string name="genero">Gênero</string>
+    <string name="year_filme">Ano de Lançamento</string>
+    <string name="sinopse">Sinopse</string>
+    <string name="link_imdb">Link no IMDB</string>
 
     <string name="name">Name</string>
     <string name="email">E-mail</string>
