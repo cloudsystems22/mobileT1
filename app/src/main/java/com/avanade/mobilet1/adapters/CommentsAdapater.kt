@@ -6,11 +6,16 @@ import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.avanade.mobilet1.R
+import com.avanade.mobilet1.databinding.FragmentEditCommentBinding
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
@@ -29,6 +34,8 @@ import kotlin.coroutines.coroutineContext
 class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>() {
     private var comments = emptyList<Comments>()
 
+    private var onClickItem: ((Comments) -> Unit)? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -41,6 +48,10 @@ class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>(
         notifyDataSetChanged()
     }
 
+    fun setOnClickItem(callback: (Comments) -> Unit){
+        this.onClickItem = callback
+    }
+
     override fun onBindViewHolder(holder: CommentsAdapater.CommentsHolder, position: Int) {
         holder.bind(comments[position])
 
@@ -49,21 +60,15 @@ class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>(
         val editComment = holder.itemView.findViewById<ImageView>(R.id.edit_comment)
         val deletComment = holder.itemView.findViewById<ImageView>(R.id.delete_comment)
 
+        holder.itemView.setOnClickListener {  }
+
         editComment.setOnClickListener {
-            val activity = holder.itemView.context as AppCompatActivity
-            val editCommentFragment = EditCommentFragment()
-            var commentsMovieFragment = CommentsMovieFragment()
-            activity.supportFragmentManager
-                .beginTransaction()
-                .replace(R.layout.fragment_comments_movie, editCommentFragment)
-                .addToBackStack(null)
-                .commit()
-            //Toast.makeText(holder.itemView.context, "${comments[position].comment}", Toast.LENGTH_SHORT).show()
+            onClickItem?.invoke(comments[position])
         }
 
         deletComment.setOnClickListener {
             val builder = AlertDialog.Builder(holder.itemView.context)
-            builder.setTitle("Deletar")
+            builder.setTitle("Apagar")
             builder.setMessage("Gostaria de apagar seu comentário?")
             builder.setPositiveButton("Confirmar", DialogInterface.OnClickListener { _, _ ->
                 firebaseFiretore.collection("comments")

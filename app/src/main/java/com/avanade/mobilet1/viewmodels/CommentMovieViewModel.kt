@@ -29,6 +29,7 @@ class CommentMovieViewModel: ViewModel() {
         get() { return _comments }
         set(value) { _comments.value }
 
+
     fun getId(movieId:String){
         getComments(movieId)
     }
@@ -59,22 +60,29 @@ class CommentMovieViewModel: ViewModel() {
     }
 
     fun commentAdd(comments: Comments, movieId: String, context: Context){
+        Log.i("xpto", "$comments")
         comments.userId = firebaseUser!!.uid
         comments.movieId = movieId
         comments.username = firebaseUser!!.email.toString()
 
-        firebaseFirestore
-            .add(comments)
-            .addOnSuccessListener(OnSuccessListener {
-                Toast.makeText(context, "Comentário enviado com sucesso", Toast.LENGTH_LONG).show()
+        if(comments.id.isNullOrEmpty()){
+            firebaseFirestore
+                .add(comments)
+                .addOnSuccessListener(OnSuccessListener {
+                    Toast.makeText(context, "Comentário enviado com sucesso", Toast.LENGTH_LONG).show()
 
-            })
-    }
+                })
+        } else {
+            firebaseFirestore
+                .document(comments.id)
+                .update("comment", comments.comment)
+                .addOnSuccessListener(OnSuccessListener {
+                    Toast.makeText(context, "Comentário atualizado com sucesso!", Toast.LENGTH_LONG).show()
 
-    fun editComment(comment:String, id:String){
-        firebaseFirestore
-            .document(id)
-            .update("comment", comment)
+                })
+        }
+
+
     }
 
 }
