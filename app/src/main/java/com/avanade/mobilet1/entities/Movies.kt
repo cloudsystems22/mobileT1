@@ -2,7 +2,7 @@ package com.avanade.mobilet1.entities
 
 import java.util.ArrayList
 
-class Movies(
+data class Movies(
     var id:String = "",
     var title:String = "",
     var thumb:String = "",
