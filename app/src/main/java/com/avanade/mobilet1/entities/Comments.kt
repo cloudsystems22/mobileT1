@@ -1,6 +1,6 @@
 package com.avanade.mobilet1.entities
 
-class Comments(
+data class Comments(
     var id:String = "",
     var comment:String = "",
     var movieId:String = "",
