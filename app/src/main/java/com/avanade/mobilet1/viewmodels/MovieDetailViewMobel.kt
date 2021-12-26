@@ -9,15 +9,22 @@ import androidx.lifecycle.ViewModel
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.entities.Movies
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
 class MovieDetailViewMobel: ViewModel() {
 
     private lateinit var firebaseFirestore: FirebaseFirestore
+    private lateinit var firebaseAuth: FirebaseAuth
 
     private var _movie = MutableLiveData<Movies>()
+
+    private var likes = emptyList<String>()
+
+    internal var userId = ""
 
     private var _comments = MutableLiveData<ArrayList<Comments>>()
 
@@ -31,6 +38,9 @@ class MovieDetailViewMobel: ViewModel() {
 
     init {
         firebaseFirestore = FirebaseFirestore.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        userId = firebaseAuth.currentUser!!.uid
 
     }
 
@@ -43,7 +53,7 @@ class MovieDetailViewMobel: ViewModel() {
         set(value) { _comments.value }
 
     fun getLikes(){
-        _likes.value = ++ number
+        _likes.value = _movie.value!!.like.count()
         _likesString.value = "${_likes.value} Curtidas"
     }
 
@@ -56,12 +66,24 @@ class MovieDetailViewMobel: ViewModel() {
         firebaseFirestore
             .collection("movies")
             .document(movieId)
-            .get()
+            .addSnapshotListener{ snapshot, error ->
+                if(error != null){
+                    return@addSnapshotListener
+                }
+                if(snapshot != null){
+                    val movie = snapshot.toObject(Movies::class.java)
+                    _movie.value = movie
+                    number = movie!!.like.count()
+                }
+            }
+            /*.get()
+
             .addOnSuccessListener(OnSuccessListener {
                 val movie = it.toObject(Movies::class.java)
                 _movie.value = movie
-                number = movie!!.likes
-            })
+                number = movie!!.like.count()
+
+            }) */
 
     }
 
@@ -93,10 +115,23 @@ class MovieDetailViewMobel: ViewModel() {
     }
 
     fun updateLikes(id:String){
-        firebaseFirestore
-            .collection("movies")
-            .document(id)
-            .update("likes", _likes.value)
+
+        likes = _movie.value!!.like
+
+        if(likes.contains(userId)){
+            firebaseFirestore
+                .collection("movies")
+                .document(id)
+                .update("like", FieldValue.arrayRemove(userId))
+
+        } else {
+            firebaseFirestore
+                .collection("movies")
+                .document(id)
+                .update("like", FieldValue.arrayUnion(userId))
+
+        }
+
     }
 
 }

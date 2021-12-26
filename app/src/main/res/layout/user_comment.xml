@@ -23,7 +23,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:scaleType="fitCenter"
-                android:src="@drawable/perfil" />
+                android:src="@drawable/user" />
         </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
