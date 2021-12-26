@@ -11,7 +11,7 @@ import com.avanade.mobilet1.R
 import com.avanade.mobilet1.databinding.FragmentEditCommentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class EditCommentFragment : BottomSheetDialogFragment() {
+class EditCommentFragment : DialogFragment() {
 
     private lateinit var binding: FragmentEditCommentBinding
 
@@ -25,7 +25,7 @@ class EditCommentFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        Toast.makeText(context, "Olá fragment edit!", Toast.LENGTH_SHORT).show()
         binding = FragmentEditCommentBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -33,7 +33,7 @@ class EditCommentFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(view.context, "Olá fragment edit!", Toast.LENGTH_SHORT).show()
+
         binding.ivSendComment.setOnClickListener {
 
         }
