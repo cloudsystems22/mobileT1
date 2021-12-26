@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.adapters.CommentsAdapater
@@ -18,6 +20,8 @@ class CommentsMovieFragment() : BottomSheetDialogFragment() {
     private lateinit var commentsAdapater: CommentsAdapater
     private lateinit var binding: FragmentCommentsMovieBinding
     private lateinit var viewModel: CommentMovieViewModel
+    private lateinit var comment: Comments
+    var commentId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,16 +50,25 @@ class CommentsMovieFragment() : BottomSheetDialogFragment() {
         commentsAdapater = CommentsAdapater()
         binding.rcComment.adapter = commentsAdapater
 
+        commentsAdapater.setOnClickItem {
+            Toast.makeText(context, "${it.id}", Toast.LENGTH_SHORT).show()
+            binding.etComment.setText(it.comment)
+            commentId = it.id.toString()
+
+        }
+
         viewModel.getComments.observe(this, Observer {
             commentsAdapater.updatelist(it)
         })
 
         binding.ivSendComment.setOnClickListener {
-            val comment = Comments(
+            comment = Comments(
+                id = commentId.toString(),
                 comment = binding.etComment.text.toString()
             )
             viewModel.commentAdd(comment, movieId, view.context)
             binding.etComment.text.clear()
+            commentId = ""
         }
     }
 

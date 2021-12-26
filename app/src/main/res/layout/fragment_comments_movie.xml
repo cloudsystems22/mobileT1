@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:id="@+id/rc_comments_layout"
     tools:context=".views.fragments.CommentsMovieFragment">
 
     <LinearLayout
