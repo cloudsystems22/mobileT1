@@ -13,5 +13,16 @@ class Movies(
     var author:String = "",
     var year:String = "",
     var category:String = "",
+    var actors:ArrayList<String> = ArrayList(),
+    var countries:ArrayList<String> = ArrayList(),
+    var gender:ArrayList<String> = ArrayList(),
+    var imdb_url:String = "",
+    var languages:ArrayList<String> = ArrayList(),
+    var runtime:String = "",
+    var tagline:String = "",
+    var rating:String = "",
+    var users_rating:String = "",
+    var votes:String = "",
+    var userId:String = ""
 
 )
