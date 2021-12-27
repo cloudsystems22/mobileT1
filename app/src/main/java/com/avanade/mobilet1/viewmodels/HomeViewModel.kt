@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.repositories.AuthRepository
 import com.avanade.mobilet1.utils.FirebaseUtils
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -16,18 +17,9 @@ class HomeViewModel: ViewModel() {
 
     private var movies = ArrayList<Movies>()
 
-    private lateinit var firebaseFirestore: FirebaseFirestore
-    private lateinit var firebaseAuth: FirebaseAuth
-
     init{
-        firebaseFirestore = FirebaseFirestore.getInstance()
-        firebaseAuth = FirebaseAuth.getInstance()
-        val currentUser = firebaseAuth.currentUser
-
         listenerMyMovies()
     }
-
-    //fun verifyUser() = authRepository.verifyUser()
 
     internal var getMyMovies: MutableLiveData<ArrayList<Movies>>
         get() { return _movies }
@@ -35,9 +27,7 @@ class HomeViewModel: ViewModel() {
 
     private fun listenerMyMovies() {
 
-        val usuarioLogadoId = firebaseAuth.uid
-
-        firebaseFirestore.collection("movies")
+        firebaseFiretore.collection("movies")
             .addSnapshotListener{ snapshot, error ->
                 if(error != null){
                     return@addSnapshotListener
@@ -53,7 +43,6 @@ class HomeViewModel: ViewModel() {
                         movies.add(movie)
                     }
                 }
-                //println(categories)
                 _movies.value = movies
 
             }

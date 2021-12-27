@@ -79,6 +79,7 @@
                     android:layout_weight="0.1"
                     app:cardCornerRadius="100dp">
                     <ImageView
+                        android:id="@+id/img_perfil"
                         android:src="@drawable/perfil"
                         android:scaleType="centerCrop"
                         android:layout_width="match_parent"

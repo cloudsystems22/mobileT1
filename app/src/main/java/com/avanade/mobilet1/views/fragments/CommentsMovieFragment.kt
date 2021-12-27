@@ -8,11 +8,13 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.avanade.mobilet1.R
 import com.avanade.mobilet1.adapters.CommentsAdapater
 import com.avanade.mobilet1.databinding.FragmentCommentsMovieBinding
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.viewmodels.CommentMovieViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.squareup.picasso.Picasso
 
 
 class CommentsMovieFragment() : BottomSheetDialogFragment() {
@@ -69,6 +71,16 @@ class CommentsMovieFragment() : BottomSheetDialogFragment() {
             binding.etComment.text.clear()
             commentId = ""
         }
+
+        viewModel.getUser.observe(viewLifecycleOwner, Observer {
+            if(it[0].photofile.isNullOrEmpty()){
+                binding.imgPerfil.setImageResource(R.drawable.user)
+            } else {
+                Picasso.with(context)
+                    .load(it[0].photofile)
+                    .into(binding.imgPerfil)
+            }
+        })
     }
 
 }

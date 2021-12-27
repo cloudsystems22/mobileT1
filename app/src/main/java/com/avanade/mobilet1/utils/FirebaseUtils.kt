@@ -7,13 +7,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 object FirebaseUtils {
-
     val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     val firebaseFiretore: FirebaseFirestore = FirebaseFirestore.getInstance()
     val firebaseUser: FirebaseUser? = firebaseAuth.currentUser
 
     val database = Firebase.database
-
-
 
 }
