@@ -63,7 +63,7 @@ class CreateMovieActivity : AppCompatActivity() {
         )
 
         val repository = MovieRepository()
-        repository.gravar(movie, fotoMovie!!, this)
+        //repository.gravar(movie, fotoMovie!!, this)
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Filme cadastrado com sucesso.")
