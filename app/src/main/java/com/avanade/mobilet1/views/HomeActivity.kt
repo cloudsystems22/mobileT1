@@ -44,6 +44,7 @@ class HomeActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.menu_home -> replaceFragment(homeFragment)
                 R.id.search_movies -> replaceFragment(searchFragemnt)
+                R.id.add_movie -> replaceFragment(addMovieFragment)
                 R.id.menu_profile -> replaceFragment(profileFragment)
             }
             true
