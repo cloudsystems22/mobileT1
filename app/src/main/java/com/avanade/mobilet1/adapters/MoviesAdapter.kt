@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.entities.Movies
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
 import com.avanade.mobilet1.views.MovieDetailActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
@@ -41,12 +43,24 @@ class MoviesAdapter(
     class MovieHolder(var view:View) : RecyclerView.ViewHolder(view){
         lateinit var bitmap:Bitmap
 
-        var firebaseAuth = FirebaseAuth.getInstance()
-        var userId = firebaseAuth.currentUser!!.uid
+        var userId = firebaseUser!!.uid
+        var comments:Int = 0
 
         fun bind(movies: Movies){
 
             with(itemView){
+
+                firebaseFiretore.collection("comments")
+                    .whereEqualTo("movieId", movies.id)
+                    .addSnapshotListener { snapshot, error ->
+                        if(error != null){
+                            return@addSnapshotListener
+                        }
+                        if(snapshot != null){
+                            comments = snapshot.documents.count()
+                            text_commit.text = "${comments.toString()}"
+                        }
+                    }
 
                 if(movies.likes.contains(userId)){
                     img_like.setImageResource(R.drawable.icolike)
@@ -54,9 +68,10 @@ class MoviesAdapter(
                     img_like.setImageResource(R.drawable.likevz)
                 }
 
+                Log.i("xpto", "${comments}")
                 title_movie.text = movies.title
                 text_like.text = movies.likes.count().toString()
-                text_commit.text = "0"
+
 
                 //var display:String = "https://firebasestorage.googleapis.com/v0/b/mobiletone.appspot.com/o/posters%2Fthumb%2Fvenom.jpg?alt=media&token=1b29cccb-ba33-4044-b9ca-bab615a44d75"
                 if(movies.thumb.isNullOrEmpty()){

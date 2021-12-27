@@ -35,8 +35,8 @@
     <ImageView
         android:id="@+id/image_movie"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/img_test" />
+        android:layout_height="220dp"
+        android:src="@drawable/naoencontradahorizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="The Office"
+            android:text="Title Movie"
             android:textColor="@color/white"
             android:textSize="12pt" />
 
@@ -63,12 +63,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
+                android:layout_margin="3dp"
                 android:text="2003 • "
                 android:textColor="@color/white"
                 android:textSize="6pt" />
 
             <TextView
+                android:textColor="@color/white"
+                android:text="100min"
+                android:layout_margin="3dp"
+                android:fontFamily="@font/montserrat"
+                android:id="@+id/tv_rumtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
                 android:id="@+id/tv_genre"
+                android:layout_margin="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -77,13 +88,64 @@
                 android:textSize="6pt" />
 
             <TextView
+                android:layout_margin="3dp"
                 android:id="@+id/tv_created_by"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="Criado por Greg Daniels "
+                android:text="Criado por Autor "
                 android:textColor="@color/white"
                 android:textSize="6pt" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="3dp"
+                android:id="@+id/tv_gender"
+                android:text="Generos • "
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_margin="3dp"
+                android:textColor="@color/white"
+                android:text="Indiomas: "
+                android:id="@+id/tv_language"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="3dp"
+                android:text="Aval User:"
+                android:textColor="@color/white"
+                android:id="@+id/tv_user_aval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_margin="3dp"
+                android:text="Avaliação:"
+                android:textColor="@color/white"
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_margin="3dp"
+                android:text="Votos"
+                android:textColor="@color/white"
+                android:id="@+id/tv_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
         <View
@@ -100,6 +162,31 @@
             android:text="Michael Scott (Steve Carell) é um patrão insensível mas que se preocupa com o bem estar de seus empregados, enquanto a série traça um olhar sobre todos eles, destacando suas diferenças..."
             android:textColor="@color/white"
             android:textSize="6pt" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Atores:"
+                android:id="@+id/tv_actors"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,6 +209,7 @@
                 android:textColor="@color/white" />
 
             <ImageView
+                android:id="@+id/img_comment"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/icocommit" />

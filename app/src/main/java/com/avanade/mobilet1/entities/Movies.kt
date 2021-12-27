@@ -21,6 +21,7 @@ data class Movies(
     var runtime:String = "",
     var tagline:String = "",
     var rating:String = "",
+    //var metascore:String = "",
     var users_rating:String = "",
     var votes:String = "",
     var userId:String = ""
