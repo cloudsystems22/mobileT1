@@ -50,43 +50,80 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.tvTitle.text = it.title
             binding.tvGenre.text = " • ${it.category} • "
             binding.tvSinopse.text = it.sinopse
-            binding.tvYear.text = it.year
+            binding.tvYear.text = "${it.year} • "
             binding.tvCreatedBy.text = "Criado por: ${it.author}"
             binding.textLike.text = "${it.likes.count()} Curtidas"
-            Log.i("xpto", "${viewModel.userId}")
+            binding.tvRumtime.text = it.runtime
+            binding.tvUserAval.text = "Avaliação Usuário: ${it.users_rating}"
+            binding.tvRating.text = " • Avaliação: ${it.rating}"
+            binding.tvVotes.text = " • Votos: ${it.votes}"
+
+            if(!it.gender.isNullOrEmpty()){
+                var genderPrnt = ""
+                it.gender.forEach {
+                    genderPrnt += "${it.toString()} • "
+                }
+                binding.tvGender.text = "Generos: ${genderPrnt}"
+            }
+
+            if(!it.languages.isNullOrEmpty()){
+                var languages = ""
+                it.languages.forEach {
+                    languages += "${it.toString()} • "
+                }
+                binding.tvLanguage.text = "Indiomas: ${languages}"
+            }
+
+            if(!it.actors.isNullOrEmpty()){
+                var actors = ""
+                it.actors.forEach {
+                    actors += "${it.toString()} • "
+                }
+                binding.tvActors.text = "Atores: ${actors} • "
+            }
+
             if(it.likes.contains(viewModel.userId)){
                 binding.imgLike.setImageResource(R.drawable.icolike)
             } else {
                 binding.imgLike.setImageResource(R.drawable.likevz)
             }
 
-            binding.textCommit.text = "${it.commnets} Comentários"
+            if(it.poster.isNullOrEmpty()){
+                binding.imageMovie.setImageResource(R.drawable.naoencontradahorizontal)
+            } else {
+                imgPoster = it.poster
+                Picasso.with(this)
+                    .load(it.poster)
+                    .into(binding.imageMovie)
+            }
 
-            imgPoster = it.poster
-            Picasso.with(this)
-                .load(it.poster)
-                .into(binding.imageMovie)
+
         })
 
-        if(binding.tvComment.text == "sem_comentarios"){
-            binding.commentAtual.setVisibility(View.INVISIBLE)
-            binding.firstComment.setVisibility(View.VISIBLE)
-        }
-
         viewModel.getComments.observe(this, Observer{
-            binding.commentAtual.setVisibility(View.VISIBLE)
-            binding.firstComment.setVisibility(View.INVISIBLE)
 
-            binding.tvUserName.text = it[0].username
-            binding.tvComment.text = it[0].comment
+            if(it.count() > 0){
+                binding.commentAtual.setVisibility(View.VISIBLE)
+                binding.firstComment.setVisibility(View.INVISIBLE)
 
-            if(it[0].photoperfil.isNullOrEmpty()){
-                binding.imgUser.setImageResource(R.drawable.user)
+                binding.tvUserName.text = it[0].username
+                binding.tvComment.text = it[0].comment
+
+                binding.textCommit.text = "${it.count()} Comentários"
+
+                if(it[0].photoperfil.isNullOrEmpty()){
+                    binding.imgUser.setImageResource(R.drawable.user)
+                } else {
+                    Picasso.with(this)
+                        .load(it[0].photoperfil)
+                        .into(binding.imgUser)
+                }
             } else {
-                Picasso.with(this)
-                    .load(it[0].photoperfil)
-                    .into(binding.imgUser)
+                binding.commentAtual.setVisibility(View.INVISIBLE)
+                binding.firstComment.setVisibility(View.VISIBLE)
             }
+
+
 
         })
 
@@ -103,6 +140,10 @@ class MovieDetailActivity : AppCompatActivity() {
         }
 
         binding.firstComment.setOnClickListener {
+            openBottomSheet(movieId)
+        }
+
+        binding.imgComment.setOnClickListener {
             openBottomSheet(movieId)
         }
 

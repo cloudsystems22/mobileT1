@@ -69,7 +69,6 @@ class MovieDetailViewMobel: ViewModel() {
         firebaseFirestore
             .collection("comments")
             .whereEqualTo("movieId", movieId)
-            .orderBy("comment").limit(1)
             .addSnapshotListener{ snapshot, error ->
                 if(error != null){
                     return@addSnapshotListener
