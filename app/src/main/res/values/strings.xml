@@ -9,7 +9,8 @@
     <string name="genero">Gênero</string>
     <string name="year_filme">Ano de Lançamento</string>
     <string name="sinopse">Sinopse</string>
-    <string name="link_imdb">Link no IMDB</string>
+    <string name="link_imdb">Link do Poster</string>
+    <string name="diretor">Diretor</string>
 
     <string name="name">Name</string>
     <string name="email">E-mail</string>
@@ -27,12 +28,16 @@
     <string name="enter_your_comment">Coment algo...</string>
 
     <string-array name="genero_filme">
-        <item>Comédia</item>
+        <item>Selecione o Gênero</item>
+        <item>Horror</item>
+        <item>Comedy</item>
+        <item>Music</item>
+        <item>Animation</item>
+        <item>Thriller</item>
+        <item>Action</item>
+        <item>Crime</item>
+        <item>War</item>
         <item>Drama</item>
-        <item>Ação</item>
-        <item>Infantil</item>
-        <item>Suspense</item>
-        <item>Terror</item>
-        <item>Ficção</item>
+        <item>Western</item>
     </string-array>
 </resources>

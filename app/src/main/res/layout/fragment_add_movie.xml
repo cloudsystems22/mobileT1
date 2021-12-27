@@ -23,7 +23,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp"
             android:gravity="center_vertical"
             android:orientation="vertical">
@@ -42,24 +42,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_movie_foto"
-                android:layout_width="160dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-                <ImageView
-                    android:id="@+id/iv_filme_foto"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    tools:srcCompat="@tools:sample/avatars" />
-            </androidx.cardview.widget.CardView>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -74,6 +56,15 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_layout"
                 android:hint="@string/movie_name"
+                android:padding="17dp"
+                android:fontFamily="@font/montserrat"/>
+
+            <EditText
+                android:id="@+id/etDiretor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_layout"
+                android:hint="@string/diretor"
                 android:padding="17dp"
                 android:fontFamily="@font/montserrat"/>
 

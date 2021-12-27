@@ -16,14 +16,18 @@ import com.avanade.mobilet1.databinding.FragmentAddMovieBinding
 import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.repositories.MovieRepository
 import com.avanade.mobilet1.views.CODE_IMAGE
+import com.avanade.mobilet1.views.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.avanade.mobilet1.views.fragments.*
+import kotlinx.android.synthetic.main.activity_home.*
+import androidx.fragment.app.*;
+
 const val CODE_IMAGE = 5000
 
 class AddMovieFragment : Fragment() {
 
     lateinit var binding: FragmentAddMovieBinding
-
-    private var fotoMovie: Bitmap? = null
+    private val homeFragment = HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +51,6 @@ class AddMovieFragment : Fragment() {
             spinner.adapter = adapter
         }
 
-
     }
 
     override fun onCreateView(
@@ -66,21 +69,46 @@ class AddMovieFragment : Fragment() {
         setupSpinner(view)
 
         binding.btnCreateMovie.setOnClickListener {
-            gravarMovie(view)
+
+            if (validarCampos(view)){
+                gravarMovie(view)
+            }
         }
 
-        binding.cardViewMovieFoto.setOnClickListener {
-            //abrirGaleria()
+    }
+
+    private fun validarCampos(view: View): Boolean {
+
+        var title = binding.etMovieName
+        if (title.text.isEmpty()) {
+            title.setError("Campo obrigatório!")
+            return false
         }
+
+        var author = binding.etDiretor
+        if (author.text.isEmpty()) {
+            author.error = "Campo obrigatório!"
+            return false
+        }
+
+        if (binding.etGenero.selectedItemId.toString() == "0") {
+            val builder = AlertDialog.Builder(view.context)
+            builder.setTitle("Seleção")
+            builder.setMessage("Selecione o gênero do filme!!")
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+            return false
+        }
+
+        var sinopse = binding.etSinopse
+        if (sinopse.text.isEmpty()) {
+            sinopse.error = "Campo obrigatório!"
+            return false
+        }
+
+
+        return true
     }
-
-    private fun abrirGaleria() {
-        val intent = Intent(Intent.ACTION_GET_CONTENT)
-        intent.type = "image/*"
-        startActivityForResult(Intent.createChooser(intent, "Escolha a imagem do filme"), CODE_IMAGE)
-    }
-
-
     private fun gravarMovie(view: View) {
         val uid = FirebaseAuth.getInstance().uid
 
@@ -89,16 +117,32 @@ class AddMovieFragment : Fragment() {
             category = binding.etGenero.selectedItem.toString(),
             year = binding.etYear.text.toString(),
             sinopse = binding.etSinopse.text.toString(),
-            thumb = binding.etLinkIMDB.text.toString()
+            thumb = binding.etLinkIMDB.text.toString(),
+            author = binding.etDiretor.text.toString(),
+            poster = binding.etLinkIMDB.text.toString()
         )
 
         val repository = MovieRepository()
         repository.gravar(movie, view.context)
+
+        //Limpa os campos depois de gravar
+        binding.etMovieName.setText("")
+        binding.etYear.setText("")
+        binding.etSinopse.setText("")
+        binding.etLinkIMDB.setText("")
+        binding.etDiretor.setText("")
+        binding.etGenero.setSelection(0)
 
         val builder = AlertDialog.Builder(view.context)
         builder.setTitle("Filme cadastrado com sucesso.")
         builder.setMessage("Seu filme foi gravado com sucesso!!")
         val dialog: AlertDialog = builder.create()
         dialog.show()
+
+        //Volta para Fragmente principal
+        val trasaction = fragmentManager?.beginTransaction()
+        trasaction?.replace(com.avanade.mobilet1.R.id.fragment_container, homeFragment)
+        trasaction?.commit()
+
     }
 }
