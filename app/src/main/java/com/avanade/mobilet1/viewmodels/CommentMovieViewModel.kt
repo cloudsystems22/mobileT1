@@ -44,10 +44,8 @@ class CommentMovieViewModel: ViewModel() {
                 comments = ArrayList<Comments>()
                 if(snapshot != null){
                     val documents = snapshot.documents
-                    Log.e("xpto", "$documents")
 
                     documents.forEach {
-                        Log.e("xpto", "${it.id}")
                         var comment = it.toObject(Comments::class.java)
                         comment!!.id = it.id
                         comments.add(comment)

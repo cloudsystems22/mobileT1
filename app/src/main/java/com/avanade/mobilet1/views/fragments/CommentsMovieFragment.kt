@@ -51,7 +51,6 @@ class CommentsMovieFragment() : BottomSheetDialogFragment() {
         binding.rcComment.adapter = commentsAdapater
 
         commentsAdapater.setOnClickItem {
-            Toast.makeText(context, "${it.id}", Toast.LENGTH_SHORT).show()
             binding.etComment.setText(it.comment)
             commentId = it.id.toString()
 
