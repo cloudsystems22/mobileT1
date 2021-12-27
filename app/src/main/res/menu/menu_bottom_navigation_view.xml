@@ -12,6 +12,11 @@
         android:icon="@drawable/icosearch"
         app:showAsAction="always"/>
 
+    <item android:id="@+id/add_movie"
+        android:title="Add"
+        android:icon="@drawable/icoadd"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/menu_profile"
         android:title="Meu Perfil"
         android:icon="@drawable/icoperfil"

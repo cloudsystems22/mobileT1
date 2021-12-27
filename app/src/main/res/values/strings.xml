@@ -26,4 +26,13 @@
     <string name="title_comments_movie">Comentários</string>
     <string name="enter_your_comment">Coment algo...</string>
 
+    <string-array name="genero_filme">
+        <item>Comédia</item>
+        <item>Drama</item>
+        <item>Ação</item>
+        <item>Infantil</item>
+        <item>Suspense</item>
+        <item>Terror</item>
+        <item>Ficção</item>
+    </string-array>
 </resources>
