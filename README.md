@@ -1,6 +1,9 @@
 # mobileT1
 ## Descrição do projeto
-Consistes num aplicativo para indicação de filmes com descrição, capa, autores, e classificação.
+Projeto desenvolvido pela equipe MobileT1, com tecnologia kotlin para android.
+O My Movie consiste em um aplicativo para smartphones com o propósito de indicação de filmes e séries,
+oferencendo ao usuário a experiencia de poder indicar um filme ou série ou buscar as avaliações referentes
+a um filme ou série.
 
 Autores:
 - Cesar Francisco Bassani da L;
@@ -9,3 +12,4 @@ Autores:
 - Luís Felipe Camargo;
 - Rodrigo de Almeida Muniz;
 - Agnelo David Fico Neto;
+
