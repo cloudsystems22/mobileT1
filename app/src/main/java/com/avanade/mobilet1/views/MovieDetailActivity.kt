@@ -51,7 +51,7 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.tvGenre.text = " • ${it.category} • "
             binding.tvSinopse.text = it.sinopse
             binding.tvYear.text = "${it.year} • "
-            binding.tvCreatedBy.text = "Criado por: ${it.author}"
+            binding.tvCreatedBy.text = "Dirigido por: ${it.author}"
             binding.textLike.text = "${it.likes.count()} Curtidas"
             binding.tvRumtime.text = it.runtime
             binding.tvUserAval.text = "Avaliação Usuário: ${it.users_rating}"
