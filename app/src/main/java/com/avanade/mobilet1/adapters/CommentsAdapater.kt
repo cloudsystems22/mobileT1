@@ -6,30 +6,18 @@ import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.avanade.mobilet1.R
-import com.avanade.mobilet1.databinding.FragmentEditCommentBinding
 import com.avanade.mobilet1.entities.Comments
-import com.avanade.mobilet1.entities.Movies
+import com.avanade.mobilet1.entities.Users
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
-import com.avanade.mobilet1.views.fragments.CommentsMovieFragment
-import com.avanade.mobilet1.views.fragments.EditCommentFragment
 import com.google.android.gms.tasks.OnSuccessListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_movie_detail.view.*
-import kotlinx.android.synthetic.main.activity_movie_detail.view.image_movie
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.user_comment.view.*
-import kotlin.coroutines.coroutineContext
 
 class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>() {
     private var comments = emptyList<Comments>()
@@ -95,6 +83,32 @@ class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>(
 
         fun bind(comment: Comments){
             with(itemView){
+
+                firebaseFiretore.collection("users")
+                    .whereEqualTo("userId", comment.userId)
+                    .addSnapshotListener { snapshot, error ->
+                        if(error != null){
+                            return@addSnapshotListener
+                        }
+                        if(snapshot != null){
+                            val documents = snapshot.documents
+
+                            documents.forEach {
+                                var user = it.toObject(Users::class.java)
+                                user!!.id = it.id
+
+                                if(user.photofile.isNullOrEmpty()){
+                                    rc_profile_logo.setImageResource(R.drawable.user)
+                                } else {
+                                    Picasso.with(context)
+                                        .load(user.photofile)
+                                        .into(rc_profile_logo)
+                                }
+                            }
+
+                        }
+                    }
+
                 rc_comment_name.text = comment.username
                 rc_comment.text = comment.comment
 
@@ -102,14 +116,6 @@ class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>(
                     lnl_menu.setVisibility(View.VISIBLE)
                 } else {
                     lnl_menu.setVisibility(View.INVISIBLE)
-                }
-
-                if(comment.photoperfil.isNullOrEmpty()){
-                    rc_profile_logo.setImageResource(R.drawable.user)
-                } else {
-                    Picasso.with(context)
-                        .load(comment.photoperfil)
-                        .into(rc_profile_logo)
                 }
 
             }

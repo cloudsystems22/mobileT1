@@ -2,15 +2,24 @@ package com.avanade.mobilet1.repositories
 
 import android.app.Application
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
+import com.avanade.mobilet1.R
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.entities.Users
+import com.avanade.mobilet1.imagens.converterBase64ToBitmap
+import com.avanade.mobilet1.imagens.converterBitmapToByteArray
 import com.avanade.mobilet1.utils.FirebaseUtils
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
 import com.avanade.mobilet1.views.HomeActivity
 import com.avanade.mobilet1.views.SignInActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnSuccessListener
 
 
 class AuthRepository(application: Application){
@@ -18,19 +27,29 @@ class AuthRepository(application: Application){
     val application = application
 
     private lateinit var googleSignInClient: GoogleSignInClient
+    lateinit var imagePerfil: Bitmap
 
     fun register(userName: String, password: String) {
         firebaseAuth.createUserWithEmailAndPassword(userName, password)
-            .addOnCompleteListener {
-               if(it.isSuccessful){
-                   val intent = Intent(application, HomeActivity::class.java)
-                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                   application.startActivity(intent)
-                   sendEmailVerification(userName)
-               } else{
-                   Toast.makeText(application, "", Toast.LENGTH_SHORT).show()
-               }
-            }
+            .addOnSuccessListener(OnSuccessListener {
+                val user = Users(
+                    userId = it.user!!.uid,
+                    username = userName,
+                    email = userName
+                )
+                insertUser(user)
+
+                val intent = Intent(application, HomeActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                application.startActivity(intent)
+                sendEmailVerification(userName)
+            })
+    }
+
+    fun insertUser(user: Users){
+        firebaseFiretore
+            .collection("users")
+            .add(user)
     }
 
     fun login(userName: String, password: String) {

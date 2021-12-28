@@ -19,6 +19,7 @@
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_add_movie_fragment.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_create_account.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_create_movie.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_edit_profile.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_home.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_home_fragment.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/activity_movie_detail.xml" value="0.22" />
@@ -36,7 +37,7 @@
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/fragment_search.xml" value="0.22" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/home_fragment.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/item_categories_movies.xml" value="0.22" />
-        <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/item_movie.xml" value="0.22" />
+        <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/item_movie.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/layout/user_comment.xml" value="0.22" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/menu/menu_bottom_navigation_view.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/a.david.fico.neto/AndroidStudioProjects/MobileT1/app/src/main/res/menu/menu_fragment_post_add.xml" value="0.16770833333333332" />

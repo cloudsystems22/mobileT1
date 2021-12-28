@@ -26,6 +26,10 @@
     <string name="check_text_remember_me">Lembre-me</string>
     <string name="title_comments_movie">Comentários</string>
     <string name="enter_your_comment">Coment algo...</string>
+    <string name="user_name">Nome do usuário</string>
+    <string name="email_user">e-mail</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="data_nasc">Data nascimento</string>
 
     <string-array name="genero_filme">
         <item>Selecione o Gênero</item>
