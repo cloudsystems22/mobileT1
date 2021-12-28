@@ -1,6 +1,7 @@
 package com.avanade.mobilet1.viewmodels
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +9,10 @@ import androidx.lifecycle.ViewModel
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.entities.Users
+import com.avanade.mobilet1.imagens.converterBitmapToByteArray
 import com.avanade.mobilet1.utils.FirebaseUtils
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
+import com.avanade.mobilet1.utils.FirebaseUtils.firebaseStorage
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
@@ -24,9 +28,12 @@ class CommentMovieViewModel: ViewModel() {
     private var _users = MutableLiveData<ArrayList<Users>>()
     private var users = ArrayList<Users>()
 
+    private lateinit var userId:String
+
     init{
         firebaseFirestore = FirebaseFirestore.getInstance().collection("comments")
-        getUser(firebaseUser!!.uid)
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
+        getUser(userId)
     }
 
     internal var getComments: MutableLiveData<ArrayList<Comments>>
@@ -110,5 +117,7 @@ class CommentMovieViewModel: ViewModel() {
                 _users.value = users
             }
     }
+
+
 
 }

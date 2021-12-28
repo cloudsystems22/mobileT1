@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="130dp"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
     android:layout_height="wrap_content"
     android:paddingHorizontal="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:src="@drawable/starwars"
-        app:layout_constraintTop_toTopOf="parent"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="10dp"
+        android:id="@+id/card_view_movie_foto"
+        android:layout_width="94dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintDimensionRatio="1:1.6"
-        android:scaleType="centerCrop"
-        android:id="@+id/image_movie"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/image_movie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/starwars"
+            app:layout_constraintDimensionRatio="1:1.6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.cardview.widget.CardView>
     <TextView
         android:layout_marginTop="8dp"
         android:text="@string/title_movie"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/image_movie"
+        app:layout_constraintTop_toBottomOf="@id/card_view_movie_foto"
         android:id="@+id/title_movie"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -35,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp">
         <ImageView
+            android:layout_margin="3dp"
             android:id="@+id/img_like"
             android:src="@drawable/icolike"
             android:layout_width="20dp"
@@ -43,11 +58,12 @@
         <TextView
             android:id="@+id/text_like"
             android:text="30"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 
         <ImageView
+            android:layout_margin="3dp"
             android:src="@drawable/icocommit"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
@@ -55,7 +71,7 @@
         <TextView
             android:id="@+id/text_commit"
             android:text="34"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 

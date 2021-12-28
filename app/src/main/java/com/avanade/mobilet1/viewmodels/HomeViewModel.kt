@@ -17,8 +17,11 @@ class HomeViewModel: ViewModel() {
 
     private var movies = ArrayList<Movies>()
 
+    private lateinit var userId:String
+
     init{
         listenerMyMovies()
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
     }
 
     internal var getMyMovies: MutableLiveData<ArrayList<Movies>>

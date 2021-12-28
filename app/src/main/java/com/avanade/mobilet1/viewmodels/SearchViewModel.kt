@@ -7,6 +7,7 @@ import com.avanade.mobilet1.entities.Movies
 import com.avanade.mobilet1.entities.Users
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
+import com.google.firebase.auth.FirebaseAuth
 
 class SearchViewModel: ViewModel() {
 
@@ -18,9 +19,12 @@ class SearchViewModel: ViewModel() {
 
     private var users = ArrayList<Users>()
 
+    private lateinit var userId:String
+
     init{
         listenerMovies()
-        getUser(firebaseUser!!.uid)
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
+        getUser(userId)
     }
 
     internal var getMovies: MutableLiveData<ArrayList<Movies>>
