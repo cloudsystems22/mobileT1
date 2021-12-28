@@ -111,20 +111,23 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 binding.textCommit.text = "${it.count()} Comentários"
 
-                if(it[0].photoperfil.isNullOrEmpty()){
-                    binding.imgUser.setImageResource(R.drawable.user)
-                } else {
-                    Picasso.with(this)
-                        .load(it[0].photoperfil)
-                        .into(binding.imgUser)
-                }
+                viewModel.getUser(it[0].userId)
+
+
             } else {
                 binding.commentAtual.setVisibility(View.INVISIBLE)
                 binding.firstComment.setVisibility(View.VISIBLE)
             }
+        })
 
-
-
+        viewModel.getUser.observe(this, Observer {
+            if(it[0].photofile.isNullOrEmpty()){
+                binding.imgUser.setImageResource(R.drawable.user)
+            } else {
+                Picasso.with(this)
+                    .load(it[0].photofile)
+                    .into(binding.imgUser)
+            }
         })
 
         binding.ivBack.setOnClickListener {

@@ -15,6 +15,7 @@ import com.avanade.mobilet1.entities.Users
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseFiretore
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_movie.view.*
 import kotlinx.android.synthetic.main.user_comment.view.*
@@ -79,7 +80,7 @@ class CommentsAdapater(): RecyclerView.Adapter<CommentsAdapater.CommentsHolder>(
     class CommentsHolder(var view: View) : RecyclerView.ViewHolder(view){
         lateinit var bitmap: Bitmap
 
-        val userId = firebaseUser!!.uid
+        var userId = FirebaseAuth.getInstance().currentUser!!.uid
 
         fun bind(comment: Comments){
             with(itemView){

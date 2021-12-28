@@ -8,6 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.avanade.mobilet1.entities.Comments
 import com.avanade.mobilet1.entities.Movies
+import com.avanade.mobilet1.entities.Users
+import com.avanade.mobilet1.utils.FirebaseUtils
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -22,10 +24,18 @@ class MovieDetailViewMobel: ViewModel() {
 
     private var _movie = MutableLiveData<Movies>()
     private var arrayLikes = emptyList<String>()
+
     internal var userId = ""
+
     private var _comments = MutableLiveData<ArrayList<Comments>>()
     private var comments = ArrayList<Comments>()
 
+    private var _users = MutableLiveData<ArrayList<Users>>()
+    private var users = ArrayList<Users>()
+
+    internal var getUser: MutableLiveData<ArrayList<Users>>
+        get() { return _users }
+        set(value) { _users.value }
 
     init {
         firebaseFirestore = FirebaseFirestore.getInstance()
@@ -85,9 +95,31 @@ class MovieDetailViewMobel: ViewModel() {
                         comments.add(comment)
                     }
                 }
+                Log.i("xpto", "${comments}")
                 //println(categories)
                 _comments.value = comments
 
+            }
+    }
+
+    fun getUser(uid:String){
+
+        FirebaseUtils.firebaseFiretore.collection("users")
+            .whereEqualTo("userId", uid)
+            .addSnapshotListener{ snapshot, error ->
+                if(error != null){
+                    return@addSnapshotListener
+                }
+                if(snapshot != null){
+                    val documents = snapshot.documents
+                    documents.forEach {
+                        var user = it.toObject(Users::class.java)
+                        user!!.id = it.id
+                        users.add(user)
+                        Log.e("xpto", "$users")
+                    }
+                }
+                _users.value = users
             }
     }
 
