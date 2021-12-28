@@ -6,11 +6,13 @@ import com.avanade.mobilet1.R
 import kotlinx.android.synthetic.main.activity_create_account.*
 import android.widget.EditText
 import android.content.Intent
+import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.extensions.Extensions.startNewActivity
 import com.avanade.mobilet1.viewmodels.AuthViewModel
 import com.avanade.mobilet1.extensions.Extensions.toast
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseAuth
 import com.avanade.mobilet1.utils.FirebaseUtils.firebaseUser
+import com.avanade.mobilet1.viewmodels.UsersViewModel
 import com.google.firebase.auth.FirebaseUser
 
 
@@ -82,20 +84,6 @@ class CreateAccountActivity : AppCompatActivity() {
             authViewModel.register(userEmail, userPassword)
 
 
-        }
-    }
-
-    /* send verification email to the new user. This will only
-    *  work if the firebase user is not null.
-    */
-
-    private fun sendEmailVerification() {
-        firebaseUser?.let {
-            it.sendEmailVerification().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    toast("email sent to $userEmail")
-                }
-            }
         }
     }
 }

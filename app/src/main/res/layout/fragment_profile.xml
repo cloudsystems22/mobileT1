@@ -1,31 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.fragments.ProfileFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile fragment"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnSignOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Sign-Out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <ImageView
+            android:layout_margin="10dp"
+            android:src="@drawable/icoperfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="3dp"
+            android:textStyle="bold"
+            android:textSize="23dp"
+            android:textColor="@color/white"
+            android:text="Perfil do Usuário"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="55dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="100dp"
+            android:id="@+id/image_perfil"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/img_perfil"
+                android:src="@drawable/user"
+                android:scaleType="centerCrop"
+                android:layout_width="151dp"
+                android:layout_height="151dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="6dp"
+                android:text="Nome:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_margin="6dp"
+                android:text="Nome:"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="6dp"
+                android:text="Email:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_margin="6dp"
+                android:text="Nome:"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="6dp"
+                android:text="Data Nasc:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_data_nasc"
+                android:layout_margin="6dp"
+                android:text="Nome:"
+                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_margin="25dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_margin="16dp"
+            android:id="@+id/btnSignOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sign-Out" />
+
+        <Button
+            android:layout_margin="16dp"
+            android:id="@+id/btn_edit_perfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Editar perfil" />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -59,7 +59,8 @@ class CreateMovieActivity : AppCompatActivity() {
             category = binding.etGenero.toString(),
             year = binding.etYear.toString(),
             sinopse = binding.etSinopse.toString(),
-            thumb = binding.etLinkIMDB.toString()
+            thumb = binding.etLinkIMDB.toString(),
+            poster = binding.etLinkIMDB.toString()
         )
 
         val repository = MovieRepository()

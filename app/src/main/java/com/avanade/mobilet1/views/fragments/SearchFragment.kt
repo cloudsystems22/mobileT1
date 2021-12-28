@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.avanade.mobilet1.R
 import com.avanade.mobilet1.entities.Categories
 import com.avanade.mobilet1.adapters.CategoriesAdapter
 import com.avanade.mobilet1.adapters.Listcategories
@@ -18,6 +19,7 @@ import com.avanade.mobilet1.adapters.listCategories
 import com.avanade.mobilet1.databinding.FragmentSearchBinding
 import com.avanade.mobilet1.viewmodels.SearchViewModel
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 
 class SearchFragment : Fragment() {
 
@@ -48,6 +50,18 @@ class SearchFragment : Fragment() {
         viewModel.getMovies.observe(viewLifecycleOwner, Observer {
             categoriesAdapter.updatelist(it)
         })
+
+        viewModel.getUser.observe(viewLifecycleOwner, Observer {
+            if(it[0].photofile.isNullOrEmpty()){
+                binding.imgPerfil.setImageResource(R.drawable.user)
+            } else {
+                Picasso.with(context)
+                    .load(it[0].photofile)
+                    .into(binding.imgPerfil)
+            }
+        })
+
+
 
         //requestMovies()
 

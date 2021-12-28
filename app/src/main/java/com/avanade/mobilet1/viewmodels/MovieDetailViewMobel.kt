@@ -31,7 +31,7 @@ class MovieDetailViewMobel: ViewModel() {
         firebaseFirestore = FirebaseFirestore.getInstance()
         firebaseAuth = FirebaseAuth.getInstance()
 
-        userId = firebaseAuth.currentUser!!.uid
+        userId = FirebaseAuth.getInstance().currentUser!!.uid
 
     }
 

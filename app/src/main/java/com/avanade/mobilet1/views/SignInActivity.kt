@@ -7,10 +7,12 @@ import android.util.Log
 
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.avanade.mobilet1.R
 import com.avanade.mobilet1.viewmodels.AuthViewModel
 import com.avanade.mobilet1.extensions.Extensions.toast
 import com.avanade.mobilet1.utils.FirebaseUtils
+import com.avanade.mobilet1.viewmodels.UsersViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

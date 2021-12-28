@@ -43,7 +43,7 @@ class MoviesAdapter(
     class MovieHolder(var view:View) : RecyclerView.ViewHolder(view){
         lateinit var bitmap:Bitmap
 
-        var userId = firebaseUser!!.uid
+        var userId = FirebaseAuth.getInstance().currentUser!!.uid
         var comments:Int = 0
 
         fun bind(movies: Movies){
