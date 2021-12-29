@@ -21,7 +21,7 @@ Projeto desenvolvido pela equipe MobileT1, com tecnologia kotlin para android. O
 </p>
 
 
-Autores:
+### Autores:
  - Cesar Francisco Bassani da L;
  - Getulio Rodrigues da Silva;
  - João Paulo Guimarães;
@@ -29,4 +29,16 @@ Autores:
  - Rodrigo de Almeida Muniz;
  - Agnelo David Fico Neto;
 
+## Arquitetura do Projeto
+
+<p align="center">
+  <image src="https://github.com/cloudsystems22/mobileT1/blob/main/mvvm.png" style="width:450px" />
+</p>
+
+O projeto foi desenvolvido no Android Studio utilizando a linguagem de programação Kotlin, e sua arquitetura foi pensanda utilizando o conceito de MVVM separando regras de negócio da camada visual das activitys e fragments, navegação foi pensada via tab, e o banco de dados utilizado foi o firestore do firebase.
+
+
+<p align="center">
+  <image src="https://github.com/cloudsystems22/mobileT1/blob/main/mapaapp.png" style="width:750px" />
+</p>
 
