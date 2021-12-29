@@ -16,7 +16,8 @@
 
 ## Descrição do projeto
 Projeto desenvolvido pela equipe MobileT1, com tecnologia kotlin para android. O My Movie consiste em um aplicativo para smartphones com o objetivo de realizar a indicação de filmes e séries, oferecendo ao usuário uma plataforma onde possa buscar e realizar indicações de filmes e séries de sua preferencia.
-<p align="right">
+<p align="center">
+  <image src="https://github.com/cloudsystems22/mobileT1/blob/main/firebase.png" style="width:250px" />
   <image src="https://github.com/cloudsystems22/mobileT1/blob/main/kotlinandroid.jpg" style="width:250px" />
 </p>
 
